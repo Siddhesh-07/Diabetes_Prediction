@@ -12,19 +12,19 @@ app = Flask(__name__)
 CORS(app)
 app.config['DEBUG'] = True
 
-scalarobject=bz2.BZ2File("Model\standardScalar.pkl", "rb")
+scalarobject=bz2.BZ2File("/config/workspace/Model/standardScalar.pkl", "rb")
 scaler=pickle.load(scalarobject)
-modelforpred = bz2.BZ2File("Model\modelForPrediction.pkl", "rb")
+modelforpred = bz2.BZ2File("/config/workspace/Model/modelForPrediction.pkl", "rb")
 model = pickle.load(modelforpred)
 
 ## Route for homepage
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
 
 ## Route for Single data point prediction
-@app.route('/predictdata',methods=['GET','POST'])
+@app.route('/',methods=['GET','POST'])
 def predict_datapoint():
     result=""
 
